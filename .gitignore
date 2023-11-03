@@ -1,0 +1,13 @@
+# Local .terraform
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# terraform lockfile
+.terraform.lock.hcl
+
+# 
+.DS_Store
+!.github/*
