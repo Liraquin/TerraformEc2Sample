@@ -202,6 +202,11 @@ resource "aws_launch_template" "asg_conf" {
 
      tags = merge({ Name = "PROJECT_NAME-ec2-cluster" }, var.default_tags)
    }
+   tag_specifications {
+     resource_type = "network-interface"
+
+     tags = merge({ Name = "PROJECT_NAME-ec2-cluster" }, var.default_tags)
+   }
 
     lifecycle {
         create_before_destroy = true
