@@ -197,16 +197,16 @@ resource "aws_launch_template" "asg_conf" {
      tags = merge({ Name = "PROJECT_NAME-ec2-cluster" }, var.default_tags)
    }
 
-   tag_specifications {
-     resource_type = "volume"
-
-     tags = merge({ Name = "PROJECT_NAME-ec2-cluster" }, var.default_tags)
-   }
-   tag_specifications {
-     resource_type = "network-interface"
-
-     tags = merge({ Name = "PROJECT_NAME-ec2-cluster" }, var.default_tags)
-   }
+   dynamic "tag_specifications" {
+    for_each = toset(var.to_tag)
+    content {
+       resource_type = tag_specifications.key
+       tags = {
+         cloud-cost-center = "",
+         Name = "PROJECT_NAME-ec2-cluster"
+       }
+    }
+  } 
 
     lifecycle {
         create_before_destroy = true

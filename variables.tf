@@ -44,6 +44,10 @@ variable "keyname" {
     type = string
 }
 
+variable "to_tag" {
+  default = ["volume", "network-interface"]
+}
+
 variable "default_tags" {
     description = "Default billing tags to be applied across all resources"
     type        = map(string)
