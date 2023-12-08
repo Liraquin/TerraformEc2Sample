@@ -202,7 +202,7 @@ resource "aws_launch_template" "asg_conf" {
     content {
        resource_type = tag_specifications.key
        tags = {
-         cloud-cost-center = "",
+         cloud-cost-center = "VALUE_GOES_HERE",
          Name = "PROJECT_NAME-ec2-cluster"
        }
     }
